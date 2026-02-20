@@ -1,0 +1,65 @@
+# Context-aware patterns: only flag when surrounding text confirms the match
+# These patterns have high false positive rates on their own but become reliable
+# when specific context words appear nearby.
+
+patterns:
+  - name: email-address
+    category: context-aware
+    regex: '\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    flags: g
+    description: Email Address
+    requireContext:
+      - email
+      - contact
+      - user
+      - customer
+      - address
+      - send to
+      - mailto
+
+  - name: phone-number
+    category: context-aware
+    regex: '\b(?:\+1[-.\s]?)?(?:\(?[0-9]{3}\)?[-.\s]?)?[0-9]{3}[-.\s]?[0-9]{4}\b'
+    flags: g
+    description: US Phone Number
+    requireContext:
+      - phone
+      - call
+      - tel
+      - mobile
+      - cell
+      - fax
+      - contact
+
+  - name: ip-address
+    category: context-aware
+    regex: '\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b'
+    flags: g
+    description: IPv4 Address
+    requireContext:
+      - ip
+      - server
+      - host
+      - address
+      - connect
+      - network
+
+  - name: drivers-license
+    category: context-aware
+    regex: '\b[A-Z][0-9]{7,12}\b'
+    flags: g
+    description: Driver License Number (letter prefix + 7-12 digits)
+    requireContext:
+      - driver
+      - license
+      - licence
+      - DL
+      - driving
+
+  - name: passport-number
+    category: context-aware
+    regex: '\b[A-Z]{1,2}[0-9]{5,9}\b'
+    flags: g
+    description: Passport Number
+    requireContext:
+      - passport

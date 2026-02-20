@@ -1,0 +1,32 @@
+# Bastion Signature Pattern Schema
+# Version: 1.0
+#
+# Each YAML file in this directory defines DLP detection patterns.
+# Files are loaded alphabetically and merged.
+#
+# Pattern fields:
+#   name          (required) Unique identifier, lowercase with hyphens
+#   category      (required) One of: high-confidence, validated, context-aware, custom
+#   regex         (required) Regular expression source (string, no delimiters)
+#   flags         (optional) Regex flags, default: "g"
+#   description   (required) Human-readable description
+#   validator     (optional) Built-in validator: "luhn", "ssn"
+#   requireContext (optional) Array of context words — pattern only matches
+#                            when at least one word appears within 200 chars
+#
+# Example:
+#   patterns:
+#     - name: my-secret-pattern
+#       category: high-confidence
+#       regex: 'my_prefix_[A-Za-z0-9]{32}'
+#       flags: g
+#       description: My Service API Key
+#
+# Validators:
+#   luhn  — Luhn checksum (credit card numbers)
+#   ssn   — US SSN structural validation (excludes 000, 666, 9xx prefixes)
+#
+# Context matching:
+#   When requireContext is set, the regex match is only reported if at least
+#   one context word appears within 200 characters of the match position.
+#   Context matching is case-insensitive.
