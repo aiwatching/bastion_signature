@@ -70,6 +70,26 @@ patterns:
     flags: g
     description: Slack Incoming Webhook URL
 
+  - name: wechat-appid
+    category: high-confidence
+    regex: '(?<![A-Za-z0-9])wx[a-f0-9]{16}(?![A-Za-z0-9])'
+    flags: g
+    description: WeChat AppID (公众号/小程序)
+
+  - name: wechat-appsecret
+    category: high-confidence
+    regex: '(?<![A-Za-z0-9_-])[a-f0-9]{32}(?![A-Za-z0-9_-])'
+    flags: g
+    description: WeChat AppSecret (32-char hex)
+    requireContext:
+      - wechat
+      - weixin
+      - 微信
+      - appsecret
+      - WECHAT_SECRET
+      - WECHAT_APP_SECRET
+      - wx_secret
+
   - name: telegram-bot-token
     category: high-confidence
     regex: '\b\d{8,10}:AA[A-Za-z0-9_-]{33,35}\b'

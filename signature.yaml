@@ -5,11 +5,17 @@
 #   It is independent of the Bastion version (which is tracked by the git branch name).
 # - The git branch (e.g. v0.1.0) indicates Bastion compatibility.
 
-version: 2
+version: 3
 updatedAt: "2026-02-20"
-patternCount: 30
+patternCount: 32
 
 changelog:
+  - version: 3
+    date: "2026-02-20"
+    changes:
+      - "Add WeChat AppID (wx prefix) detection"
+      - "Add WeChat AppSecret detection (32-char hex with context)"
+
   - version: 2
     date: "2026-02-20"
     changes:
