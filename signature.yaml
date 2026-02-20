@@ -1,0 +1,15 @@
+# Bastion Signature Manifest
+# This file is read by Bastion to track signature version and updates.
+
+version: "0.1.0"
+updatedAt: "2026-02-20"
+patternCount: 27
+
+changelog:
+  - version: "0.1.0"
+    date: "2026-02-20"
+    changes:
+      - "Initial release"
+      - "20 high-confidence patterns (AWS, GitHub, Slack, Stripe, LLM providers, Telegram, etc.)"
+      - "2 validated patterns (credit card with Luhn, SSN)"
+      - "5 context-aware patterns (email, phone, IP, driver license, passport)"
