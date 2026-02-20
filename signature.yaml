@@ -1,12 +1,16 @@
 # Bastion Signature Manifest
 # This file is read by Bastion to track signature version and updates.
+#
+# - "version" is the signature revision number, incremented on every pattern update.
+#   It is independent of the Bastion version (which is tracked by the git branch name).
+# - The git branch (e.g. v0.1.0) indicates Bastion compatibility.
 
-version: "0.1.0"
+version: 1
 updatedAt: "2026-02-20"
 patternCount: 27
 
 changelog:
-  - version: "0.1.0"
+  - version: 1
     date: "2026-02-20"
     changes:
       - "Initial release"

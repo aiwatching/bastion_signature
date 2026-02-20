@@ -2,24 +2,32 @@
 
 DLP detection patterns for [Bastion AI Gateway](https://github.com/aiwatching/bastion).
 
-## Branch Strategy
+## Versioning
 
-Each Bastion version has a corresponding branch:
+There are **two independent version numbers**:
 
-| Branch | Bastion Version | Status |
-|--------|----------------|--------|
-| `v0.1.0` | 0.1.0 | Current |
+| Version | Meaning | Example |
+|---------|---------|---------|
+| **Git branch** | Bastion compatibility version | `v0.1.0` = works with Bastion 0.1.0 |
+| **Signature version** (`signature.yaml → version`) | Pattern revision number, incremented on every update | `1`, `2`, `3`... |
 
-When Bastion upgrades, a new branch is created. Old branches remain available for older installations.
+The git branch stays the same until Bastion upgrades. The signature version increments every time patterns are added, modified, or removed within that branch.
+
+### Current status
+
+| Branch | Bastion Version | Signature Version | Patterns |
+|--------|----------------|-------------------|----------|
+| `v0.1.0` | 0.1.0 | 1 | 27 |
 
 ## Directory Structure
 
 ```
+signature.yaml            # Manifest: signature version, changelog
 patterns/
-  schema.yaml           # Pattern schema documentation
-  high-confidence.yaml  # Low false-positive patterns (API keys, tokens, private keys)
-  validated.yaml        # Patterns with structural validators (credit card, SSN)
-  context-aware.yaml    # Patterns that require context keywords nearby
+  schema.yaml             # Pattern format documentation
+  high-confidence.yaml    # Low false-positive patterns (API keys, tokens, private keys)
+  validated.yaml          # Patterns with structural validators (credit card, SSN)
+  context-aware.yaml      # Patterns that require context keywords nearby
 ```
 
 ## Usage
@@ -39,16 +47,18 @@ plugins:
 ### How it works
 
 1. On startup (if `syncOnStart: true`), Bastion clones/pulls this repo to `~/.bastion/signatures/`
-2. All `patterns/*.yaml` files are parsed
-3. Patterns are merged into the SQLite database (upsert by name)
-4. Remote patterns can be toggled on/off from the Dashboard, same as built-in patterns
+2. Reads `signature.yaml` for version info
+3. All `patterns/*.yaml` files are parsed
+4. Patterns are merged into the SQLite database (upsert by name)
+5. Dashboard shows current signature version and notifies when updates are available
 
 ### Adding patterns
 
 1. Fork this repo
 2. Add patterns to an existing YAML file or create a new one under `patterns/`
 3. Follow the schema in `patterns/schema.yaml`
-4. Submit a PR
+4. **Increment `version` in `signature.yaml`** and update `patternCount`
+5. Submit a PR
 
 ## Pattern Schema
 
