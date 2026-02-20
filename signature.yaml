@@ -5,11 +5,18 @@
 #   It is independent of the Bastion version (which is tracked by the git branch name).
 # - The git branch (e.g. v0.1.0) indicates Bastion compatibility.
 
-version: 1
+version: 2
 updatedAt: "2026-02-20"
-patternCount: 27
+patternCount: 30
 
 changelog:
+  - version: 2
+    date: "2026-02-20"
+    changes:
+      - "Add Slack App-Level Token (xapp-) detection"
+      - "Add Slack Configuration / Refresh Token (xoxe-) detection"
+      - "Add Slack Incoming Webhook URL detection"
+
   - version: 1
     date: "2026-02-20"
     changes:

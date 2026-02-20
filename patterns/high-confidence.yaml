@@ -50,7 +50,25 @@ patterns:
     category: high-confidence
     regex: 'xox[bporas]-[0-9]{10,13}-[A-Za-z0-9-]{20,}'
     flags: g
-    description: Slack Token
+    description: Slack Token (bot, user, app, workspace)
+
+  - name: slack-app-token
+    category: high-confidence
+    regex: 'xapp-[0-9]+-[A-Za-z0-9]+-[0-9]+-[A-Za-z0-9]+'
+    flags: g
+    description: Slack App-Level Token
+
+  - name: slack-config-token
+    category: high-confidence
+    regex: 'xoxe(?:\.xox[bp])?-[0-9]+-[A-Za-z0-9-]+'
+    flags: g
+    description: Slack Configuration / Refresh Token
+
+  - name: slack-webhook-url
+    category: high-confidence
+    regex: 'https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[A-Za-z0-9]+'
+    flags: g
+    description: Slack Incoming Webhook URL
 
   - name: telegram-bot-token
     category: high-confidence
