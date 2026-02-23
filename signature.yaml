@@ -5,11 +5,16 @@
 #   It is independent of the Bastion version (which is tracked by the git branch name).
 # - The git branch (e.g. v0.1.0) indicates Bastion compatibility.
 
-version: 3
-updatedAt: "2026-02-20"
-patternCount: 32
+version: 4
+updatedAt: "2026-02-22"
+patternCount: 33
 
 changelog:
+  - version: 4
+    date: "2026-02-22"
+    changes:
+      - "Add Brave Search API Key (BSA prefix) detection"
+
   - version: 3
     date: "2026-02-20"
     changes:

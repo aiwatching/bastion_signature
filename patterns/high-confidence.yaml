@@ -175,6 +175,14 @@ patterns:
       - together
       - TOGETHER_API_KEY
 
+  # ── Search / Browser ──
+
+  - name: brave-api-key
+    category: high-confidence
+    regex: 'BSA[A-Za-z0-9_-]{20,}'
+    flags: g
+    description: Brave Search API Key
+
   # ── Generic Secret Assignment ──
 
   - name: password-assignment
