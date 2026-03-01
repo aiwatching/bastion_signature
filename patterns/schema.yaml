@@ -13,6 +13,12 @@
 #   validator     (optional) Built-in validator: "luhn", "ssn"
 #   requireContext (optional) Array of context words — pattern only matches
 #                            when at least one word appears within 200 chars
+#   contextVerify  (optional) Object for post-match verification:
+#     antiPatterns     (optional) Array of regex strings — reject if any matches
+#     confirmPatterns  (optional) Array of regex strings — require at least one match
+#     minEntropy       (optional) Minimum Shannon entropy for the matched text
+#     rejectInCodeBlock (optional) Reject matches inside markdown code blocks
+#     Note: antiPatterns/confirmPatterns are compiled with case-insensitive flag.
 #
 # Example:
 #   patterns:

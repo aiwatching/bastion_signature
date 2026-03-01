@@ -19,6 +19,8 @@ patterns:
       - aws
       - secret
       - AWS_SECRET
+    contextVerify:
+      minEntropy: 3.5
 
   - name: azure-openai-api-key
     category: high-confidence
@@ -29,6 +31,8 @@ patterns:
       - azure
       - AZURE_OPENAI
       - openai.azure.com
+    contextVerify:
+      minEntropy: 3.5
 
   # ── Code Hosting / DevOps ──
 
@@ -119,6 +123,10 @@ patterns:
     regex: 'sk-(?!ant-)[A-Za-z0-9_-]{40,}'
     flags: g
     description: OpenAI API Key (also matches DeepSeek, Moonshot, Tongyi, and other sk- prefixed keys)
+    contextVerify:
+      antiPatterns:
+        - 'eyJ[A-Za-z0-9]'
+      minEntropy: 3.5
 
   - name: anthropic-api-key
     category: high-confidence
@@ -174,6 +182,8 @@ patterns:
       - MISTRAL_API_KEY
       - together
       - TOGETHER_API_KEY
+    contextVerify:
+      minEntropy: 3.5
 
   # ── Search / Browser ──
 
@@ -190,3 +200,6 @@ patterns:
     regex: '(?:password|passwd|pwd|pass_?word|secret_?key|auth_?token|access_?token|api_?key|apikey|\bkey\b|_key|_secret|_token|credential)[\s]*[=:]\s*[''"]?([^\s''"]{6,})'
     flags: gi
     description: Password or secret assignment (key=value pattern)
+    contextVerify:
+      antiPatterns:
+        - '(?:example|placeholder|your[_-]?|xxx|test[_-]?|sample|dummy|changeme)'

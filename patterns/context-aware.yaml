@@ -55,6 +55,9 @@ patterns:
       - licence
       - DL
       - driving
+    contextVerify:
+      antiPatterns:
+        - '(?:version|v\d|build|release|commit|sha|hash|ref)'
 
   - name: passport-number
     category: context-aware
