@@ -9,6 +9,9 @@ patterns:
     regex: '(?<![A-Z0-9])AKIA[0-9A-Z]{16}(?![A-Z0-9])'
     flags: g
     description: AWS Access Key ID
+    contextVerify:
+      confirmPatterns:
+        - '(?:aws|amazon|iam|access.?key|secret.?key|credential)'
 
   - name: aws-secret-key
     category: high-confidence
@@ -124,8 +127,8 @@ patterns:
     flags: g
     description: OpenAI API Key (also matches DeepSeek, Moonshot, Tongyi, and other sk- prefixed keys)
     contextVerify:
-      antiPatterns:
-        - 'eyJ[A-Za-z0-9]'
+      confirmPatterns:
+        - '(?:api|key|token|secret|openai|deepseek|moonshot|credential|bearer)'
       minEntropy: 3.5
 
   - name: anthropic-api-key
