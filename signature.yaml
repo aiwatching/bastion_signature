@@ -5,7 +5,7 @@
 #   It is independent of the Bastion version (which is tracked by the git branch name).
 # - The git branch (e.g. v0.1.0) indicates Bastion compatibility.
 
-version: 6
+version: 7
 updatedAt: "2026-02-22"
 patternCount: 33
 
