@@ -200,7 +200,7 @@ patterns:
 
   - name: password-assignment
     category: high-confidence
-    regex: '(?:password|passwd|pwd|pass_?word|secret_?key|auth_?token|access_?token|api_?key|apikey|\bkey\b|_key|_secret|_token|credential)[\s]*[=:]\s*[''"]?([^\s''"]{6,})'
+    regex: '(?:password|passwd|pwd|pass_?word|secret_?key|auth_?token|access_?token|api_?key|apikey|_key|_secret|_token|credential)[\s]*[=:]\s*[''"]?(?!(?:localStorage|document|window|console|JSON|Object|Array|Math|Date|String|Number|Boolean|null\b|undefined\b|true\b|false\b|function\b|new |this\.|self\.|require|import|export|return |typeof |void |os\.|config\.|process\.env|getenv|settings\.|env\[|environ|\$\{|System\.))([^\s''"(]{6,})'
     flags: gi
     description: Password or secret assignment (key=value pattern)
     contextVerify:
